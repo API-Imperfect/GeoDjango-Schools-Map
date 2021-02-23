@@ -7,6 +7,10 @@ services:
          dockerfile: Dockerfile.dev
       container_name: School-API
       command: python3 manage.py runserver 0.0.0.0:8000
+      # volumes here mounts the code to the container and updates
+      # the container when a change to the source code is made.
+      # without this you would have to rebuild the image each time
+      #changes are made to source code
       volumes:
          - .:/app
       ports:
@@ -24,6 +28,7 @@ services:
       ports:
          - 5432:5432
       volumes:
+         # for persistent storage
          - postgres_data:/var/lib/postgresql
       environment:
          - POSTGRES_USER=${POSTGRES_USER}
