@@ -16,7 +16,7 @@ run the command: make build
 navigate to localhost:8080
 ```
 
-If you prefer not using Make files
+If you prefer not using Makefiles
 
 ```
 cd GeoDjango-Schools-Map
