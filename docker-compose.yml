@@ -13,8 +13,8 @@ services:
       #changes are made to source code
       volumes:
          - .:/app
-      ports:
-         - 8000:8000
+      # ports:
+      #    - 8000:8000
       env_file:
          - .env
       restart: "on-failure"
@@ -37,6 +37,19 @@ services:
       restart: "on-failure"
       networks:
          - school-api
+
+   nginx:
+      restart: always
+      depends_on:
+         - school-api
+      build:
+         context: ./nginx
+         dockerfile: Dockerfile.dev
+      ports:
+         - 8080:80
+      networks:
+         - school-api
+
 networks:
    school-api:
       driver: bridge
